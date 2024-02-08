@@ -1,4 +1,3 @@
-//玩家一与电脑用‘x’标识,玩家二用'o'标识
 #include<iostream>
 #include<vector>
 #include<stdio.h>
@@ -7,7 +6,7 @@
 #include<windows.h>
 using namespace::std;
 #define N 20
-char chessboardflag = ' ';  //棋盘标志
+char chessboardflag = ' ';  
 void color(int a)//改变颜色的函数
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), a);
@@ -63,7 +62,7 @@ public:
 			color(0x70);
 		}
 	}
-	coordinate playchess1()  //玩家一下棋
+	coordinate playchess1()  //玩家1下棋
 	{
 		cout << "请玩家一输入坐标:" << endl;
 		int x1, y1;
@@ -88,7 +87,7 @@ public:
 		temp.y = y1;
 		return temp;
 	}
-	coordinate playchess2()  //玩家二下棋
+	coordinate playchess2()  //玩家2下棋
 	{
 		cout << "请玩家2输入坐标:" << endl;
 		int x2, y2;
@@ -113,7 +112,7 @@ public:
 		temp.y = y2;
 		return temp;
 	}
-	coordinate computerplayer()//电脑下棋
+	coordinate computerplayer()//人机下棋
 	{
 		coordinate temp;
 		srand((unsigned)time(NULL));
@@ -221,28 +220,28 @@ public:
 	{
 		initchessboard();//初始化棋盘
 		int t;
-		cout << "请选择模式，人机模式输入1，人人模式输入2。" << endl;
+		cout << "请选择模式，单人模式输入1，两人模式输入2" << endl;
 		cin >> t;
 		while (t == 1)
 		{
 			int m = judgeheqi();
 			if (m == -1)
 			{
-				cout << "和棋!!!" << endl;
+				cout << "和棋" << endl;
 				break;
 			}
 			coordinate temp1 = computerplayer();//电脑下棋
 			printchessboard();//打印棋盘
 			if (judgewiner1('x', temp1) || judgewiner2('x', temp1) || judgewiner3('x', temp1) || judgewiner4('x', temp1))
 			{
-				cout << "电脑胜！！！";
+				cout << "电脑胜";
 				break;
 			}
 			coordinate temp2 = playchess2();//玩家2下棋
 			printchessboard();//打印棋盘
 			if (judgewiner1('o', temp2) || judgewiner2('o', temp2) || judgewiner3('o', temp2) || judgewiner4('o', temp2))
 			{
-				cout << "玩家2胜!!!";
+				cout << "玩家2胜";
 				break;
 			}
 		}
@@ -251,21 +250,21 @@ public:
 			int m = judgeheqi();
 			if (m == -1)
 			{
-				cout << "和棋!!!" << endl;
+				cout << "和棋" << endl;
 				break;
 			}
 			coordinate temp1 = playchess1();//电脑下棋
 			printchessboard();//打印棋盘
 			if (judgewiner1('x', temp1) || judgewiner2('x', temp1) || judgewiner3('x', temp1) || judgewiner4('x', temp1))
 			{
-				cout << "玩家1胜！！！";
+				cout << "玩家1胜";
 				break;
 			}
 			coordinate temp2 = playchess2();//玩家2下棋
 			printchessboard();//打印棋盘
 			if (judgewiner1('o', temp2) || judgewiner2('o', temp2) || judgewiner3('o', temp2) || judgewiner4('o', temp2))
 			{
-				cout << "玩家2胜!!!";
+				cout << "玩家2胜";
 				break;
 			}
 		}
