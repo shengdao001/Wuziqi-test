@@ -64,13 +64,13 @@ public:
 	}
 	coordinate playchess1()  //玩家1下棋
 	{
-		cout << "请玩家一输入坐标:" << endl;
+		cout << "请玩家1输入坐标:" << endl;
 		int x1, y1;
 		while (cin >> x1 >> y1)
 		{
 			if (x1 > N-1 || y1 > N-1 || x1 < 0 || y1 < 0)
 			{
-				cout << "输入超界，请从新输入" << endl;
+				cout << "输入超出范围，请从新输入" << endl;
 				continue;
 			}
 			if (chessboard[x1][y1] == ' ') {
@@ -95,7 +95,7 @@ public:
 		{
 			if (x2 > N-1 || y2 > N-1 || x2 < 0 || y2 < 0)
 			{
-				cout << "输入超界，请从新输入" << endl;
+				cout << "输入超出范围，请从新输入" << endl;
 				continue;
 			}
 			if (chessboard[x2][y2] == ' ') {
@@ -209,7 +209,7 @@ public:
 		}
 		return 0;
 	}
-	int judgeheqi()//判断和棋
+	int judgeheqi()//判断是否和棋
 	{
 		for (int i = 1; i < N; ++i)
 			for (int j = 1; j < N; ++j)
